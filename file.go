@@ -9,7 +9,7 @@ import (
 
 func WriteFile(p string, data []byte) error {
 	dir := path.Dir(p)
-	if err := os.MkdirAll(dir, os.FileMode(0o755)); err != nil && !os.IsExist(err) {
+	if err := os.MkdirAll(dir, os.FileMode(0o644)); err != nil && !os.IsExist(err) {
 		return errors.Wrap(err, "dirの作成に失敗しました")
 	}
 	if err := os.WriteFile(p, data, os.FileMode(0o755)); err != nil {
